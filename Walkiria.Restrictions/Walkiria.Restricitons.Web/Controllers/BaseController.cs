@@ -3,9 +3,9 @@ using Walkiria.Restrictions.DataContext.Enums;
 
 namespace Walkiria.Restricitons.Web.Controllers;
 
-[Route("api/v0.1/[controller]")]
+[Route("api/v0.1/[controller]/[action]")]
 [ApiController]
-public abstract class BaseController : ControllerBase
+public class BaseController : ControllerBase
 {
     public BaseController(EnumTypeResctriction typeResctriction)
     {

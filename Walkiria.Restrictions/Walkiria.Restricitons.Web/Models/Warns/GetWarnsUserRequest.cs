@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Walkiria.Restricitons.Web.Models.Bans;
+namespace Walkiria.Restricitons.Web.Models.Warns;
 
-public class GetBannedUserRequest
+public class GetWarnsUserRequest
 {
     [FromRoute]
     public long TelegramId { get; set; }

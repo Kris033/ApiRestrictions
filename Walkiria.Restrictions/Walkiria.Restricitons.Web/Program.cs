@@ -16,11 +16,10 @@ public class Program
         app.UseSwaggerUI();
         app.UseCors("default");
 
-        app.UseHttpsRedirection();
-
+        /*
         app.UseAuthentication();
         app.UseAuthorization();
-
+        */
         app.MapControllers();
 
         app.Run();

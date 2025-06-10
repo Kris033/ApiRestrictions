@@ -17,20 +17,20 @@ public class BanController : BaseController
     }
 
     [HttpGet]
-    public async Task<BaseResponse> GetBannedUser(GetBannedUserRequest request)
+    public async Task<GetBannedUserResponse> GetBannedUser([FromRoute] GetBannedUserRequest request)
     {
-        
+        return new GetBannedUserResponse();
     }
 
     [HttpPost]
     public async Task<BaseResponse> SetUserBan(SetUserBanRequest request)
     {
-
+        return new BaseResponse();
     }
 
     [HttpDelete]
     public async Task<BaseResponse> RemoveBanUser(RemoveBanUserRequest request)
     {
-
+        return new BaseResponse();
     }
 }

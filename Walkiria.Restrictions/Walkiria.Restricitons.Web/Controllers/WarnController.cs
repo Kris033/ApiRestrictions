@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Walkiria.Restricitons.Web.Models.Bans;
+using Walkiria.Restricitons.Web.Models.Warns;
 using Walkiria.Restrictions.DataContext.Enums;
 using Walkiria.Restrictions.Interfaces;
 using Walkiria.Restrictions.Interfaces.Dtos;
@@ -16,20 +18,20 @@ public class WarnController : BaseController
     }
 
     [HttpGet]
-    public async Task<BaseResponse> GetWarnsUser()
+    public async Task<GetWarnsUserResponse> GetWarnsUser([FromRoute] GetWarnsUserRequest request)
     {
-
+        return new GetWarnsUserResponse();
     }
 
     [HttpPost]
-    public async Task<BaseResponse> SetUserWarn()
+    public async Task<BaseResponse> SetUserWarn(SetUserWarnRequest request)
     {
-
+        return new BaseResponse();
     }
 
     [HttpDelete]
-    public async Task<BaseResponse> RemoveWarnUser()
+    public async Task<BaseResponse> RemoveWarnUser(RemoveWarnUserRequest request)
     {
-
+        return new BaseResponse();
     }
 }
