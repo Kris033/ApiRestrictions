@@ -11,7 +11,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Walkiria.Restrictions.Servi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Walkiria.Restrictions.Interfaces", "Walkiria.Restrictions.Interfaces\Walkiria.Restrictions.Interfaces.csproj", "{4B53B09A-8FD5-47D2-8821-106DE066C238}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Walkiria.Schedulers", "Walkiria.Scheduler\Walkiria.Schedulers.csproj", "{2F736521-164A-46A1-83BA-43805D58E89F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Walkiria.Schedulers", "Walkiria.Scheduler\Walkiria.Schedulers.csproj", "{2F736521-164A-46A1-83BA-43805D58E89F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Элементы решения", "Элементы решения", "{B6426C5F-3C7E-4121-A155-F6FD57E51983}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

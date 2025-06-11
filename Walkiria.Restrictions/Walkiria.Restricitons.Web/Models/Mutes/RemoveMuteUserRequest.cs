@@ -2,5 +2,7 @@
 
 public class RemoveMuteUserRequest
 {
-    public long TelegramId { get; set; }
+    public long UserTgId { get; set; }
+
+    public long GroupTgId { get; set; }
 }

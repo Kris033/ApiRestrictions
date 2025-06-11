@@ -3,13 +3,18 @@ using Walkiria.Restrictions.DataContext.Models;
 
 namespace Walkiria.Restrictions.DataContext;
 
-public class RestrictionDataContext(DbContextOptions<RestrictionDataContext> _dbContext) : DbContext
+public class RestrictionDataContext : DbContext
 {
+    public RestrictionDataContext(DbContextOptions<RestrictionDataContext> options) : base(options)
+    {
+        AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+        Database.EnsureCreated();
+    }
+
     public DbSet<Restriction> Restrictions { get; set; }
 
     protected override void OnModelCreating(ModelBuilder mb)
     {
-        mb.Entity<Restriction>().HasNoKey();
-        mb.Entity<Restriction>().HasIndex(x => x.TelegramId);
+        mb.Entity<Restriction>().HasKey(x => new { x.UserTgId, x.GroupTgId });
     }
 }

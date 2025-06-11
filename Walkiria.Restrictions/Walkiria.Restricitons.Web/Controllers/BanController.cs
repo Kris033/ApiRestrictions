@@ -3,6 +3,7 @@ using Walkiria.Restricitons.Web.Models.Bans;
 using Walkiria.Restrictions.DataContext.Enums;
 using Walkiria.Restrictions.Interfaces;
 using Walkiria.Restrictions.Interfaces.Dtos;
+using Walkiria.Restrictions.Interfaces.Dtos.Restrictions;
 
 namespace Walkiria.Restricitons.Web.Controllers;
 
@@ -19,18 +20,47 @@ public class BanController : BaseController
     [HttpGet]
     public async Task<GetBannedUserResponse> GetBannedUser([FromRoute] GetBannedUserRequest request)
     {
-        return new GetBannedUserResponse();
+        var response = await _restrictionsService.GetRestrictions(
+            new GetRestrictionsRequest
+            {
+                UserTgId = request.UserTgId,
+                GroupTgId = request.GroupTgId,
+                TypeResctriction = _typeResctriction
+            });
+        return new GetBannedUserResponse
+        {
+            Items = response.Items.Select(x => new GetBannedUserListItem
+            {
+                Reason = x.Reason,
+                RemainingDateTimeBanned = x.DateEnd - DateTime.UtcNow
+            }).ToList(),
+            ErrorMessage = response.ErrorMessage
+        };
     }
 
     [HttpPost]
     public async Task<BaseResponse> SetUserBan(SetUserBanRequest request)
     {
-        return new BaseResponse();
+        return await _restrictionsService.SetRestriction(
+            new SetRestrictionRequest 
+            { 
+                UserTgId = request.UserTgId, 
+                GroupTgId = request.GroupTgId,
+                DateEnd = request.DateEnd, 
+                Reason = request.Reason, 
+                TypeResctriction = _typeResctriction
+            });
     }
 
     [HttpDelete]
     public async Task<BaseResponse> RemoveBanUser(RemoveBanUserRequest request)
     {
-        return new BaseResponse();
+        return await _restrictionsService.RemoveRestrictions(
+            new RemoveRestrictionsRequest 
+            { 
+                UserTgId = request.UserTgId,
+                GroupTgId = request.GroupTgId,
+                TypeResctriction = _typeResctriction
+            });
     }
 }

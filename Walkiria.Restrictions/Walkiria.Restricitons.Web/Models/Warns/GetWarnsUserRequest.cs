@@ -5,5 +5,8 @@ namespace Walkiria.Restricitons.Web.Models.Warns;
 public class GetWarnsUserRequest
 {
     [FromRoute]
-    public long TelegramId { get; set; }
+    public long UserTgId { get; set; }
+
+    [FromRoute]
+    public long GroupTgId { get; set; }
 }

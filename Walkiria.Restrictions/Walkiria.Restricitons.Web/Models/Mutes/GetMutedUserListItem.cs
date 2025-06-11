@@ -2,7 +2,7 @@
 
 public class GetMutedUserListItem
 {
-    public DateTime RemainingDateTimeWarned { get; set; }
+    public TimeSpan RemainingDateTimeMuted { get; set; }
 
     public string? Reason { get; set; }
 }

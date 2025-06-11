@@ -1,6 +1,8 @@
-﻿namespace Walkiria.Restricitons.Web.Models.Mutes;
+﻿using Walkiria.Restrictions.Interfaces.Dtos;
 
-public class GetMutedUserResponse
+namespace Walkiria.Restricitons.Web.Models.Mutes;
+
+public class GetMutedUserResponse : BaseResponse
 {
     public List<GetMutedUserListItem> Items { get; set; } = [];
 }

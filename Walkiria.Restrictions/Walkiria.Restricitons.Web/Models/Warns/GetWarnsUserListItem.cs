@@ -2,7 +2,7 @@
 
 public class GetWarnsUserListItem
 {
-    public DateTime RemainingDateTimeWarned { get; set; }
+    public TimeSpan RemainingDateTimeWarned { get; set; }
 
     public string? Reason { get; set; }
 }

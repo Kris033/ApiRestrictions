@@ -10,4 +10,8 @@
     <ProjectReference Include="..\Walkiria.Restrictions.Interfaces\Walkiria.Restrictions.Interfaces.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Exceptions\" />
+  </ItemGroup>
+
 </Project>

@@ -2,5 +2,7 @@
 
 public class RemoveWarnUserRequest
 {
-    public long TelegramId { get; set; }
+    public long UserTgId { get; set; }
+
+    public long GroupTgId { get; set; }
 }

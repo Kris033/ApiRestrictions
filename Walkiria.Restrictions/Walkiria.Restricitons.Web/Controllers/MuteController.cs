@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Walkiria.Restricitons.Web.Models.Bans;
 using Walkiria.Restricitons.Web.Models.Mutes;
 using Walkiria.Restrictions.DataContext.Enums;
 using Walkiria.Restrictions.Interfaces;
 using Walkiria.Restrictions.Interfaces.Dtos;
+using Walkiria.Restrictions.Interfaces.Dtos.Restrictions;
 
 namespace Walkiria.Restricitons.Web.Controllers;
 
@@ -20,18 +20,47 @@ public class MuteController : BaseController
     [HttpGet]
     public async Task<GetMutedUserResponse> GetMutedUser([FromRoute] GetMutedUserRequest request)
     {
-        return new GetMutedUserResponse();
+        var response = await _restrictionsService.GetRestrictions(
+            new GetRestrictionsRequest
+            {
+                UserTgId = request.UserTgId,
+                GroupTgId = request.GroupTgId,
+                TypeResctriction = _typeResctriction
+            });
+        return new GetMutedUserResponse
+        {
+            Items = response.Items.Select(x => new GetMutedUserListItem
+            {
+                Reason = x.Reason,
+                RemainingDateTimeMuted = x.DateEnd - DateTime.UtcNow
+            }).ToList(),
+            ErrorMessage = response.ErrorMessage
+        };
     }
 
     [HttpPost]
     public async Task<BaseResponse> SetUserMute(SetUserMuteRequest request)
     {
-        return new BaseResponse();
+        return await _restrictionsService.SetRestriction(
+            new SetRestrictionRequest
+            {
+                UserTgId = request.UserTgId,
+                GroupTgId = request.GroupTgId,
+                DateEnd = request.DateEnd,
+                Reason = request.Reason,
+                TypeResctriction = _typeResctriction
+            });
     }
 
     [HttpDelete]
     public async Task<BaseResponse> RemoveMuteUser(RemoveMuteUserRequest request)
     {
-        return new BaseResponse();
+        return await _restrictionsService.RemoveRestrictions(
+            new RemoveRestrictionsRequest
+            {
+                UserTgId = request.UserTgId,
+                GroupTgId = request.GroupTgId,
+                TypeResctriction = _typeResctriction
+            });
     }
 }

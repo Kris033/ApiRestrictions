@@ -4,9 +4,11 @@ namespace Walkiria.Restrictions.Interfaces.Dtos.Restrictions;
 
 public class SetRestrictionRequest
 {
-    public long TelegramId { get; set; }
+    public long UserTgId { get; set; }
 
-    public DateTime? DateEnd { get; set; }
+    public long GroupTgId { get; set; }
+
+    public DateTime DateEnd { get; set; }
 
     public string? Reason { get; set; }
 

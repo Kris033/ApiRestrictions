@@ -5,5 +5,8 @@ namespace Walkiria.Restricitons.Web.Models.Bans;
 public class GetBannedUserRequest
 {
     [FromRoute]
-    public long TelegramId { get; set; }
+    public long UserTgId { get; set; }
+
+    [FromRoute]
+    public long GroupTgId { get; set; }
 }

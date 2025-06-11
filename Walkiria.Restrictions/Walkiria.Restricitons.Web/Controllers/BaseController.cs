@@ -3,7 +3,7 @@ using Walkiria.Restrictions.DataContext.Enums;
 
 namespace Walkiria.Restricitons.Web.Controllers;
 
-[Route("api/v0.1/[controller]/[action]")]
+[Route("api/v0.2/[controller]/[action]")]
 [ApiController]
 public class BaseController : ControllerBase
 {

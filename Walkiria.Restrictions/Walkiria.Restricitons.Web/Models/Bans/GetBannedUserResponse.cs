@@ -1,6 +1,8 @@
-﻿namespace Walkiria.Restricitons.Web.Models.Bans;
+﻿using Walkiria.Restrictions.Interfaces.Dtos;
 
-public class GetBannedUserResponse
+namespace Walkiria.Restricitons.Web.Models.Bans;
+
+public class GetBannedUserResponse : BaseResponse
 {
     public List<GetBannedUserListItem> Items { get; set; } = [];
 }
